@@ -24,30 +24,30 @@ public class RandomNamesAndNouns {
     
     public String getFirstName() {
     	try {
-			return getRandomLineText(this.firstNames);
-			
+            return getRandomLineText(this.firstNames);
+            
 		} catch (IOException e) {
-			e.printStackTrace();
+            e.printStackTrace();
 		}
     	return null;
     }
     
     public String getLastName() {
     	try {
-			return getRandomLineText(this.lastNames);
+            return getRandomLineText(this.lastNames);
 			
 		} catch (IOException e) {
-			e.printStackTrace();
+            e.printStackTrace();
 		}
     	return null;
     }
     
     public String getNoun() {
     	try {
-			return getRandomLineText(this.nounList);
+            return getRandomLineText(this.nounList);
 			
 		} catch (IOException e) {
-			e.printStackTrace();
+            e.printStackTrace();
 		}
     	return null;
     }
