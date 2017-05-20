@@ -22,54 +22,38 @@ public class RandomNamesAndNouns {
         }
     }
 
-    public String getFirstName() {
-        try {
-            return getRandomLineText(this.firstNames);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
+    public String getFirstName() throws IOException {
+        return getRandomLineText(this.firstNames);
     }
 
-    public String getLastName() {
-        try {
-            return getRandomLineText(this.lastNames);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
+    public String getLastName() throws IOException {
+        return getRandomLineText(this.lastNames);
     }
 
-    public String getNoun() {
-        try {
-            return getRandomLineText(this.nounList);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
+    public String getNoun() throws IOException {
+        return getRandomLineText(this.nounList);
     }
 
     /**
      * @return String of random line in parameter file
      * 
-     * Gets location of byte at the start of a random line then returns it
+     * Seeks backwards from random byte to find '\n' char; reads following line
      * Biased towards longer lines - should modify to use rejection sampling
      */
     public String getRandomLineText(RandomAccessFile f) throws IOException {
-        // Get position of random byte/character
-        long randomLocation = (long) (Math.random() * f.length());
-        // Move to start of line
-        while (true) {
-            f.seek(randomLocation);
-            if (f.readUTF().equals("\n")) {
-                return f.readLine();
+        long randomByteLocation = (long) (Math.random() * f.length()); 
+
+        while (randomByteLocation >= 0) {
+            f.seek(randomByteLocation);   // Move pointer to location
+            char c = (char) f.readByte(); // Get byte, cast to char
+
+            if (c == '\n') {
+                return f.readLine();      // If newline char, return following line
             } else {
-                randomLocation--;
+                randomByteLocation --;    // Else try again with previous char
             }
         }
+        return "getRandomLineText failed";
     }
 
     public void testFiles() throws IOException {
