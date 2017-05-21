@@ -4,17 +4,19 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 
-public class RandomNamesAndNouns {
+public class RandomEmailParts {
 
     private RandomAccessFile firstNames;
     private RandomAccessFile lastNames;
+    private RandomAccessFile emailList;
     private RandomAccessFile nounList;
 
-    public RandomNamesAndNouns() {
+    public RandomEmailParts() {
         try {
-            this.firstNames = new RandomAccessFile("src/main/res/firstnames.txt", "r");
-            this.lastNames = new RandomAccessFile("src/main/res/lastnames.txt", "r");
-            this.nounList = new RandomAccessFile("src/main/res/nounlist.txt", "r");
+            this.firstNames = new RandomAccessFile("src/main/res/first_names.txt", "r");
+            this.lastNames = new RandomAccessFile("src/main/res/last_names.txt", "r");
+            this.emailList = new RandomAccessFile("src/main/res/email_list.txt", "r");
+            this.nounList = new RandomAccessFile("src/main/res/noun_list.txt", "r");
 
         } catch (FileNotFoundException e) {
             System.out.println("Text file not found");
@@ -29,6 +31,10 @@ public class RandomNamesAndNouns {
     public String getLastName() throws IOException {
         return getRandomLineText(this.lastNames);
     }
+    
+    public String getEmail() throws IOException {
+        return getRandomLineText(this.emailList);
+    }
 
     public String getNoun() throws IOException {
         return getRandomLineText(this.nounList);
@@ -41,7 +47,7 @@ public class RandomNamesAndNouns {
      * Biased towards longer lines - should modify to use rejection sampling
      */
     public String getRandomLineText(RandomAccessFile f) throws IOException {
-        long randomByteLocation = (long) (Math.random() * f.length()); 
+        long randomByteLocation = (long) (Math.random() * f.length());
 
         while (randomByteLocation >= 0) {
             f.seek(randomByteLocation);   // Move pointer to location
@@ -54,12 +60,5 @@ public class RandomNamesAndNouns {
             }
         }
         return "getRandomLineText failed";
-    }
-
-    public void testFiles() throws IOException {
-        System.out.println("Testing Files:");
-        System.out.println("firstNames pointer location: " + this.firstNames.getFilePointer());
-        System.out.println("lastNames pointer location: " + this.lastNames.getFilePointer());
-        System.out.println("nounList pointer location: " + this.nounList.getFilePointer());
     }
 }
