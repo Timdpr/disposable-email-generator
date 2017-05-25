@@ -8,21 +8,26 @@ public class EmailGenerator {
     private RandomEmailParts rP = new RandomEmailParts();
     private Random random = new Random();
 
-    public void start(int howMany) throws IOException{
-        while (howMany > 0) {
-            switch (getCombo()) {
-            case 1: System.out.println(rP.getFirstName() +rP.getLastName()+ rP.getEmail());
-                    break;
-            case 2: System.out.println(rP.getFirstName() + rP.getNoun() + rP.getEmail());
-                    break;
-            case 3: System.out.println(rP.getNoun() + rP.getFirstName() + rP.getEmail());
-                    break;
-            case 4: System.out.println(rP.getFirstName() + rP.getLastName()
-                                     + random.nextInt(100) + rP.getEmail());
-                    break;
+    public String makeDisplayText(int n) throws IOException {
+        String emailText = "";
+        for (int i = n; i > 0; i--) {
+            emailText += start();
+            if (i != 1) {
+                emailText += "\n";
             }
-            howMany--;
         }
+        return emailText;
+    }
+
+    public String start() throws IOException {
+        switch (getCombo()) {
+        case 1: return rP.getFirstName() +rP.getLastName()+ rP.getEmail();
+        case 2: return rP.getFirstName() + rP.getNoun() + rP.getEmail();
+        case 3: return rP.getNoun() + rP.getFirstName() + rP.getEmail();
+        case 4: return rP.getFirstName() + rP.getLastName() +
+                       random.nextInt(100) + rP.getEmail();
+        }
+        return null;
     }
 
     public int getCombo() {
