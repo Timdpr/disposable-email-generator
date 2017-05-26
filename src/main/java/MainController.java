@@ -19,12 +19,15 @@ public class MainController {
 
     public void start() {
         try {
+            this.textArea.setText("");
             EmailGenerator emailGenerator = new EmailGenerator();
+
             String input = this.numberField.getText();
             if (input.equals("cat")) {
                 Image image = new Image("/main/res/secret_image.jpg");
                 this.imageView.setImage(image);
             }
+
             int numberToGenerate = Integer.parseInt(input);
             textArea.setText(emailGenerator.makeDisplayText(numberToGenerate));
 
