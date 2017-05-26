@@ -8,9 +8,16 @@ public class EmailGenerator {
     private RandomEmailParts rP = new RandomEmailParts();
     private Random random = new Random();
 
-    public String makeDisplayText(int n) throws IOException {
+    /**
+     * @param Number of emails to generate
+     * @return String of emails on individual lines
+     * 
+     * Generates and formats emails for display in the TextArea
+     * Controller class should use this method
+     */
+    public String makeDisplayText(int toGenerate) throws IOException {
         String emailText = "";
-        for (int i = n; i > 0; i--) {
+        for (int i = toGenerate; i > 0; i--) {
             emailText += start();
             if (i != 1) {
                 emailText += "\n";
@@ -22,8 +29,11 @@ public class EmailGenerator {
     public String start() throws IOException {
         switch (getCombo()) {
         case 1: return rP.getFirstName() +rP.getLastName()+ rP.getEmail();
+
         case 2: return rP.getFirstName() + rP.getNoun() + rP.getEmail();
+
         case 3: return rP.getNoun() + rP.getFirstName() + rP.getEmail();
+
         case 4: return rP.getFirstName() + rP.getLastName() +
                        random.nextInt(100) + rP.getEmail();
         }
