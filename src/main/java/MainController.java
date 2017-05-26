@@ -5,6 +5,8 @@ import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class MainController {
 
@@ -12,11 +14,18 @@ public class MainController {
     private TextField numberField;
     @FXML
     private TextArea textArea;
+    @FXML
+    private ImageView imageView;
 
     public void start() {
         try {
             EmailGenerator emailGenerator = new EmailGenerator();
-            int numberToGenerate = Integer.parseInt(this.numberField.getText());
+            String input = this.numberField.getText();
+            if (input.equals("cat")) {
+                Image image = new Image("/main/res/secret_image.jpg");
+                this.imageView.setImage(image);
+            }
+            int numberToGenerate = Integer.parseInt(input);
             textArea.setText(emailGenerator.makeDisplayText(numberToGenerate));
 
         } catch (IOException e) {
