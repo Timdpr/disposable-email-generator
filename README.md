@@ -7,9 +7,7 @@ Names are randomised using random byte access (speed!) and rejection sampling (f
 The addresses, though random, should receive email, with no unpleasant undeliverableness.
 
 ## Download
-### **[Here!](https://www.mediafire.com/?c6iu35gzs9khpwz)**
-&nbsp;
-
+**[Here!](https://www.mediafire.com/?c6iu35gzs9khpwz)**
 
 ## License
 
