@@ -11,7 +11,6 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <BorderPane xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.MainController">
    <top>
       <VBox BorderPane.alignment="CENTER">
@@ -32,7 +31,7 @@
                      </HBox.margin>
                   </TextField>
                   <Region prefHeight="35.0" prefWidth="55.0" HBox.hgrow="ALWAYS" />
-                  <Button fx:id="startButton" mnemonicParsing="false" onAction="#start" text="Generate!">
+                  <Button mnemonicParsing="false" onAction="#start" text="Generate!">
                      <HBox.margin>
                         <Insets right="10.0" top="10.0" />
                      </HBox.margin>
@@ -43,7 +42,7 @@
       </VBox>
    </top>
    <center>
-      <TextArea id="textArea" fx:id="textArea" text="rythdgrsdF@rhtdgfd.com" BorderPane.alignment="CENTER">
+      <TextArea id="textArea" fx:id="textArea" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets top="10.0" />
          </BorderPane.margin>
