@@ -48,7 +48,7 @@ public class RandomEmailParts {
      * Returns line with probability min line length (2) / line length
      * (2 is incorrect for email domains, but works well enough!)
      */
-    public String getRandomLineText(RandomAccessFile f) throws IOException {
+    private String getRandomLineText(RandomAccessFile f) throws IOException {
         long randomByteLocation = 1;
         while (randomByteLocation > 0) {
             randomByteLocation = getRandomByteLocation(f);
@@ -73,7 +73,7 @@ public class RandomEmailParts {
     /**
      * @return Location of random byte in parameter file, except 0
      */
-    public long getRandomByteLocation(RandomAccessFile f) throws IOException {
+    private long getRandomByteLocation(RandomAccessFile f) throws IOException {
         long randomByteLocation = (long) (Math.random() * f.length());
         if (randomByteLocation == 0) {
             randomByteLocation++;

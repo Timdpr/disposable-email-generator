@@ -26,7 +26,7 @@ public class EmailGenerator {
         return emailText;
     }
 
-    public String start() throws IOException {
+    private String start() throws IOException {
         switch (getCombo()) {
         case 1: return rP.getFirstName() +rP.getLastName()+ rP.getEmail();
 
@@ -40,7 +40,7 @@ public class EmailGenerator {
         return null;
     }
 
-    public int getCombo() {
+    private int getCombo() {
         double d = random.nextDouble();
         if (d < 0.5) {
             return 1;
