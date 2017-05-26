@@ -13,10 +13,15 @@ public class RandomEmailParts {
 
     public RandomEmailParts() {
         try {
-            this.firstNames = new RandomAccessFile("src/main/res/first_names.txt", "r");
-            this.lastNames = new RandomAccessFile("src/main/res/last_names.txt", "r");
-            this.emailList = new RandomAccessFile("src/main/res/email_list.txt", "r");
-            this.nounList = new RandomAccessFile("src/main/res/noun_list.txt", "r");
+            String path = RandomEmailParts.class
+                    .getProtectionDomain()
+                    .getCodeSource()
+                    .getLocation()
+                    .getPath();
+            this.firstNames = new RandomAccessFile(path + "first_names.txt", "r");
+            this.lastNames = new RandomAccessFile(path + "last_names.txt", "r");
+            this.emailList = new RandomAccessFile(path + "email_list.txt", "r");
+            this.nounList = new RandomAccessFile(path + "noun_list.txt", "r");
 
         } catch (FileNotFoundException e) {
             System.out.println("Text file not found");
