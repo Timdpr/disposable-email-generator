@@ -7,7 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
-public class Main extends Application {    
+public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
@@ -16,17 +16,12 @@ public class Main extends Application {
             scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
             primaryStage.setTitle("Disposable Email Generator");
 
-            /*
             primaryStage.getIcons().addAll(
-            // JavaFX is bad at auto choosing icons, so, many are given, ending with 48x48 as a compromise:
-                    new Image(getClass().getResourceAsStream("logo16.png")), 
-                    new Image(getClass().getResourceAsStream("logo32.png")),
-                    new Image(getClass().getResourceAsStream("logo64.png")),
-                    new Image(getClass().getResourceAsStream("logo256.png")),
-                    new Image(getClass().getResourceAsStream("logo48.png"))
-                    ); // Getting IllegalArgumentException when images in /res/, so in /src/ for now
-            primaryStage.getIcons().add(new Image("file:/logo48.png"));
-             */
+                    // JavaFX is bad at auto choosing icons, so, many are given:
+                    new Image(getClass().getResourceAsStream("/main/res/icon16.png")), 
+                    new Image(getClass().getResourceAsStream("/main/res/icon32.png")),
+                    new Image(getClass().getResourceAsStream("/main/res/icon64.png")),
+                    new Image(getClass().getResourceAsStream("/main/res/icon48.png")));
 
             primaryStage.setScene(scene);
             primaryStage.show();
